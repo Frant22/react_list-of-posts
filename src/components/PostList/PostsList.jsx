@@ -62,7 +62,7 @@ export default function PostsList({ setPostId }) {
         {posts.map((post) => (
           <li
             key={post.id}
-            className="PostList__item"
+            className="PostsList__item"
           >
             <div>
               <b>

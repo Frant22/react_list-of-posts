@@ -16,9 +16,3 @@ export function addPostComment(comment) {
     body: JSON.stringify(comment),
   });
 }
-
-export function deletePostComment(commentId) {
-  return request(`${BASE_URL}/comments/${commentId}`, {
-    method: 'DELETE',
-  });
-}

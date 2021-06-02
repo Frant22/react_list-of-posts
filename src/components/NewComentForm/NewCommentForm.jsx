@@ -1,30 +1,33 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './NewCommentForm.scss';
-import { addPostComment } from '../../api/comments';
 
-export default function NewCommentForm({ postId }) {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [text, setText] = useState('');
+export default function NewCommentForm({ addNewComment }) {
+  const [newComment, setNewComment] = useState({
+    name: '',
+    email: '',
+    body: '',
+  });
 
-  const handleChange = (event, callback) => {
-    callback(event.target.value);
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    setNewComment((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    addPostComment({
-      postId,
-      name,
-      email,
-      body: text,
-    });
+    addNewComment(newComment);
 
-    setName('');
-    setEmail('');
-    setText('');
+    setNewComment({
+      name: '',
+      email: '',
+      body: '',
+    });
   };
 
   return (
@@ -39,8 +42,8 @@ export default function NewCommentForm({ postId }) {
           name="name"
           placeholder="Your name"
           className="NewCommentForm__input"
-          value={name}
-          onChange={(event) => handleChange(event, setName)}
+          value={newComment.name}
+          onChange={(event) => handleChange(event)}
         />
       </div>
 
@@ -50,8 +53,8 @@ export default function NewCommentForm({ postId }) {
           name="email"
           placeholder="Your email"
           className="NewCommentForm__input"
-          value={email}
-          onChange={(event) => handleChange(event, setEmail)}
+          value={newComment.email}
+          onChange={(event) => handleChange(event)}
         />
       </div>
 
@@ -60,8 +63,8 @@ export default function NewCommentForm({ postId }) {
           name="body"
           placeholder="Type comment here"
           className="NewCommentForm__input"
-          value={text}
-          onChange={(event) => handleChange(event, setText)}
+          value={newComment.text}
+          onChange={(event) => handleChange(event)}
         />
       </div>
 
@@ -76,6 +79,5 @@ export default function NewCommentForm({ postId }) {
 }
 
 NewCommentForm.propTypes = {
-  postId: PropTypes.number.isRequired,
-  // handleAddComment: PropTypes.func.isRequired,
+  addNewComment: PropTypes.func.isRequired,
 };

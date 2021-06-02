@@ -1,0 +1,31 @@
+.NewPostForm {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: center;
+  padding: 20px;
+
+  &__input {
+    width: 60%;
+    border: 1px solid #4d457b;
+    border-radius: 15px;
+    font-family: inherit;
+    font-size: 0.9rem;
+    padding: 10px 5px;
+    color: #4d457b;
+
+    &:focus,
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus {
+      outline: none;
+      border-bottom: 1px solid #4d457b;
+      -webkit-box-shadow: 0 0 0 1000px #fff inset;
+      transition: background-color 5000s ease-in-out 0s;
+    }
+  }
+
+  &__submit-button {
+    margin-top: 10px;
+  }
+}

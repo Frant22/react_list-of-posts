@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './styles/main.scss';
+import './App.scss';
 import PostsList from './components/PostList/PostsList';
 import PostDetails from './components/PostDetails/PostDetails';
 
@@ -13,16 +13,18 @@ function App() {
       </header>
 
       <main>
-        <div className="App__sidebar">
-          <PostsList setPostId={setPostId} />
-        </div>
+        <div className="App__container">
+          <div className="App__sidebar">
+            <PostsList setPostId={setPostId} />
+          </div>
 
-        <div className="App__content">
-          {postId && (
-          <PostDetails
-            postId={postId}
-          />
-          )}
+          <div className="App__content">
+            {postId && (
+            <PostDetails
+              postId={postId}
+            />
+            )}
+          </div>
         </div>
       </main>
     </div>

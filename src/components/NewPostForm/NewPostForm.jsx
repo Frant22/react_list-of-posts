@@ -6,20 +6,24 @@ export default function NewPostForm({ handleCreatePostButton, setNewPost, newPos
   return (
     <form
       action="POST"
+      className="NewPostForm"
     >
       <input
         type="text"
         value={newPost.title}
         onChange={(event) => setNewPost((prevPost) => ({ ...prevPost, title: event.target.value }))}
+        className="NewPostForm__input"
       />
       <input
         type="text"
         value={newPost.body}
         onChange={(event) => setNewPost((prevPost) => ({ ...prevPost, body: event.target.value }))}
+        className="NewPostForm__input"
       />
       <button
         type="button"
         onClick={handleCreatePostButton}
+        className="NewPostForm__submit-button button"
       >
         Create
       </button>
